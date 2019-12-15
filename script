@@ -1,0 +1,51 @@
+
+import paho.mqtt.client as mqtt
+import paho.mqtt.publish as publish
+import urlparse
+import sys
+import time
+import json
+import os
+import subprocess
+
+from translate import translation
+
+from wia import Wia
+from sense_hat import SenseHat
+sense = SenseHat()
+
+wia = Wia()
+wia.access_token ="d_sk_xxxxxxxxxxxxxxxxxx"
+
+wrd = os.environ['word']
+trsl = translation
+
+wia.Event.publish(name="word", data=wrd)
+wia.Event.publish(name="translation", data=trsl)
+
+# parse mqtt url for connection details
+url_str = "mqtt://test.mosquitto.org:1883/xxx/home"
+print(url_str)
+url = urlparse.urlparse(url_str)
+base_topic = url.path[1:]
+auth=None
+# Connect
+if (url.username):
+    auth = {'username':url.username, 'password':url.password}
+
+
+
+# Publish a message
+
+while True:
+
+    #Create JSON strings
+    wrd_sensor=json.dumps({"word":wrd})
+    trsl_sensor=json.dumps({"translation":trsl})
+
+    #Create array of MQTT messages
+    wrd_msg={'topic':base_topic, 'payload':wrd_sensor}
+    trsl_msg={'topic':base_topic, 'payload':trsl_sensor}
+    msgs=[wrd_msg,trsl_msg]
+
+
