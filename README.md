@@ -1,6 +1,7 @@
 # CompSystems
 
-⦁	 Short project description.
+Short project description.
+
 My family and I moved to Luxembourg recently and my children are now learning Luxembourgish and German at school. I want to turn my Raspberry Pi into a voice recognition German to English translator. * As I do not speak German myself, for testing purpose, the project translates French (French-Canadian) to English.
 
 After pressing the sensorHat, the recording will start for 5 seconds. An "R" is displayed on the Raspberry Pi right after the button is pressed and disappeared to let the user know the recording has started.  This creates a .wav file with the required specifications to be sent to the Google Speech-to-text API. Once the audio file is converted to text, it is then sent to Google translate. eSpeak renders the English translation.
