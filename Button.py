@@ -7,7 +7,7 @@ from sense_hat import SenseHat
 sense = SenseHat()
 
 wia = Wia()
-wia.access_token ="d_sk_gmnO6Rpy0Pfnlpawq8NWWbfn"
+wia.access_token ="d_sk_xxxxxxxxxxxxxxxxxxxxxx"
 
 
 while True:
